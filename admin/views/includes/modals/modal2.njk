@@ -1,0 +1,45 @@
+<div id="modelDiv2" class="container animated fadeInUp">
+	<h2>Markdown Editor</h2>
+	<div class="opt_linkify opt_typographer opt__highlight result-as-html">
+		<div class="container-fluid">
+			<div class="form-inline demo-options">
+			{% for item in gdata.mdData %}
+				<div class="checkbox">
+					<input id="{{item.id}}" type="checkbox">
+					<label class="_tip">{{item.name}} </label>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+		<div class="container left-align">
+			<div class="row">
+			<form id="saveMD" role="form" action="/saveMD" method="post">
+				<div class="col-md-6 col-sm-12 mb20">
+					<div class="demo-control"><a href="#" class="source-clear">clear</a></div>
+					<textarea id="sourceMD" name="sourceMD" class="source"></textarea>
+					<div class="form-group col-md-6 col-sm-12 m20 w100">
+						<input id="mdName" name="mdName" type="text" placeholder="File name" class="form-control" required>
+						<div class="help-block">Save as<span class="right">./admin/public/markdown/</span></div>
+					</div>
+				</div>
+				
+				<section class="col-md-6 col-sm-12 mb20">
+					<div class="demo-control">
+					{% for item in gdata.mdControl %}
+						<a href="#" data-result-as="{{item.id}}">{{item.id}}</a>
+					{% endfor %}
+					</div>
+					<div class="result-html"></div>
+						<pre class="hljs result-src"><code class="result-src-content"></code></pre>
+						<pre class="hljs result-debug"><code class="result-debug-content"></code></pre> 
+				</section>
+				
+				<div class="form-group col-md-6 col-sm-12">
+					<button type="submit" class="btn btn-primary btn-block mt15">Save</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+	<button class="btn btn-default mt10 shrink" onclick="closeMdl()">Close</button>
+</div>

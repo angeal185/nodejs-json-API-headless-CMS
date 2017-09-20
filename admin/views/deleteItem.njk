@@ -1,0 +1,13 @@
+{% extends 'layout.njk' %}
+
+{% block content %} 
+<div class="container-fluid">
+{{ macro.breadcrumb(title) }}
+	<div class="row">
+		{% for item in data %}
+			{{ macro.deleteBtn(item) }}
+		{% endfor %}
+	</div>
+	{{ macro.deleteItemForm(url="Item") }}
+</div>
+{% endblock %}

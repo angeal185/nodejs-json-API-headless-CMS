@@ -1,0 +1,12 @@
+<breadcrumbs></breadcrumbs>
+<div class="container mg-40">
+<div class="row">
+<ul ng-controller="GalleryCtrl">
+  <li ng-repeat="image in images" class="col-md-3 col-sm-6 galImg">
+    <a ng-click="openLightboxModal($index)">
+      <img ng-src="{{image.thumbUrl}}" class="img-thumbnail">
+    </a>
+  </li>
+</ul>
+</div>
+</div>

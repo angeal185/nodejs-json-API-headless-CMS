@@ -1,0 +1,14 @@
+/node_modules
+
+/dist
+
+/.tmp
+
+/.sass-cache
+
+/bower_components
+
+/test
+/front
+/admin/public/front/images
+/admin/public/app/img

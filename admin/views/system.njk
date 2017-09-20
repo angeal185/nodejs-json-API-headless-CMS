@@ -1,0 +1,83 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<style>
+#profile{word-wrap: break-word;}
+#profile p{color:#9e9e9e}
+#profile p span{color: #CDDC39}
+
+</style>
+
+
+
+<div class="container-fluid">
+<h3 class="center">vault</h3>
+
+{{network.type | dump}}
+
+
+<div id="profile" class="panel col-md-4 bs20 shrink" style="padding: 2em;width: 360px;"></div>
+
+
+</div>
+
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+var url =
+  " https://disqus.com//api/3.0/users/details.json?access_token=53f0afcddc4a414a82cb3a57b1272d13&api_key=w4YsycYz93yZAKJ7ufLmxg9iuTAaK0lege9Ic7dU1Pap7VK8srAgGxRjroF7xEEX&api_secret=bZ80f9Z3nEdPhUxQ4NJBqBtwuZgWl0dKvFdcmJ2aMpSnZD5ovZhFl3s9jIa4oUqu";
+var xhr;
+xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+xhr.send();
+xhr.onreadystatechange = function() {
+  var data, items,output;
+  if (this.readyState !== 4) {
+    return;
+  }
+  if (this.status !== 200) {
+    alert("Error: " + (this.status ? this.statusText : "error"));
+    return;
+  }
+  data = JSON.parse(this.responseText);
+  items = data.response;
+  output =
+    '<img class="mb10" src="' +
+    items.avatar.permalink +
+    '" /><p>username: <span>' +
+    items.username +
+    "</span></p><p>name: <span>" +
+    items.name +
+    "</span></p><p>Id: <span>" +
+    items.id +
+    "</span></p><p>url: <span>" +
+    items.url +
+    "</span></p><p>Profile: <span>" +
+    items.profileUrl +
+    "</span></p><p>Followers: <span>" +
+    items.numFollowers +
+    "</span></p><p>Following: <span>" +
+    items.numFollowing +
+    "</span></p><p>Likes: <span>" +
+    items.numLikesReceived +
+    "</span></p><p>Reputation: <span>" +
+    items.rep +
+    "</span></p><p>Reputation Label: " +
+    items.reputationLabel +
+    "</span></p><p>Location: " +
+    items.location +
+    "</span></p><p>Join date: <span>" +
+    items.joinedAt +
+    "</span></p><p>About: <span>" +
+    items.about +
+    "</span></p>";
+  document.getElementById("profile").innerHTML = output;
+};
+
+
+</script>
+{%endblock%}

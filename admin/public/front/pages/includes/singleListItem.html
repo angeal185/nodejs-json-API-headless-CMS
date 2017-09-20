@@ -1,0 +1,12 @@
+<div class="entry-image">
+	<a ng-href="#!/store/items/{{item.slug}}"><img src="{{item.img[0]}}" alt="Image"></a>
+</div>
+<div class="entry-c">
+	<div class="entry-title">
+		<h4><a href="#!/store/items/{{item.slug}}">{{item.name}}</a></h4>
+	</div>
+	<ul class="entry-meta">
+		<li class="color">{{item.price | currency:"AUD$"}}</li>
+	</ul><br>
+	<rating value="item.stars" max="5"></rating>
+</div>

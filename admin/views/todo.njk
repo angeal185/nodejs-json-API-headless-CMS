@@ -1,0 +1,36 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+	<h1 class="center">{{title}}</h1>
+	<ol class="breadcrumb">
+		<li> <i class="fa fa-dashboard"></i>&nbsp;&nbsp;<a href="/">Dashboard</a> </li>
+		<li class="active"> <i class="fa fa-code"></i>&nbsp;&nbsp;<span id="breadcrumb">{{title}}</span> </li>
+	</ol>
+
+	<div class="row">
+		{% for item in data %}
+		<div class="col-md-6 col-sm-12">
+		<div class="panel td-panel shrink">
+		<h3 class="td-title">{{item.title}}</h3>
+		<p class="td-date">{{item.date}}</p>
+		<p class="td-td">{{item.content}}</p>
+			<a name="{{item.title}}" onclick="document.getElementById('todelete').value = this.name;" class="fa fa-close td-delete"></a>
+		</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<form action="/todo" method="post">
+		<div class="form-group col-md-6">
+			<input id="todelete" type="text" name="todelete" placeholder="id" class="form-control" style="height: 80px;
+text-align: center;" readonly/> </div>
+		<div class="col-md-6">
+			<button type="submit" id="form" class="btn btn-primary btn-lg btn-block btn-edit">Delete</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}

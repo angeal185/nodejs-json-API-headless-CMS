@@ -1,0 +1,130 @@
+[{
+	"logo":"images/logo.png",
+	"API": [{
+        "snipcartAPI": "MTIxZmI2YzQtNjM0Ny00ODZjLWJkMGItMjk4YTg2YTQ5OWZlNjM2MjcxOTM1ODc1MTI2MjMy"
+    },{
+        "flickr":"461b9ac500a47a6138192970200534e1"
+    }],
+    "topLinks": [{
+        "href": "faqs",
+        "name": "FAQs"
+    }, {
+        "href": "contact",
+        "name": "Contact"
+    }, {
+        "href": "subscribe",
+        "name": "Subscribe"
+    }],
+	"socialLinks": [{
+        "href": "#",
+		"icon":"facebook",
+        "name": "Facebook"
+    },{
+        "href": "#",
+		"icon":"twitter",
+        "name": "Twitter"
+    },{
+        "href": "#",
+		"icon":"linkedin",
+        "name": "Linkedin"
+    },{
+        "href": "#",
+		"icon":"flickr",
+        "name": "Flickr"
+    },{
+        "href": "#",
+		"icon":"pinterest",
+        "name": "Pinterest"
+    }],
+	"infoLinks": [{
+        "icon": "email3",
+        "message": "Drop an Email",
+		"info":"info@canvas.com"
+    }, {
+        "icon": "call",
+        "message": "Get in Touch",
+		"info":"1800-1144-551"
+    }],
+	"pageLinks": [{
+        "href": "",
+        "name": "Home"
+    }, {
+        "href": "store",
+        "name": "Store"
+    }, {
+        "href": "blog",
+        "name": "Blog"
+    },{
+        "href": "gallery",
+        "name": "Gallery"
+    }, {
+        "href": "about",
+        "name": "About"
+    }],
+    "blogCategories": [{
+        "href": "development",
+        "name": "Development"
+    }, {
+        "href": "design",
+        "name": "Design"
+    }, {
+        "href": "angular",
+        "name": "Angular"
+    },{
+        "href": "jquery",
+        "name": "Jquery"
+    },{
+        "href": "jquery",
+        "name": "Jquery"
+    },{
+        "href": "nodejs",
+        "name": "NodeJs"
+    },{
+        "href": "stylus",
+        "name": "Stylus"
+    },{
+        "href": "json",
+        "name": "JSON"
+    },{
+        "href": "api",
+        "name": "API"
+    },{
+        "href": "html",
+        "name": "HTML"
+    },{
+        "href": "scss",
+        "name": "SCSS"
+    },{
+        "href": "javascript",
+        "name": "Javascript"
+    },{
+        "href": "python",
+        "name": "Python"
+    },{
+        "href": "express",
+        "name": "Express"
+    }],
+    "storeCategories": [{
+        "href": "shirts",
+        "name": "Shirts"
+    }, {
+        "href": "skirts",
+        "name": "Skirts"
+    }, {
+        "href": "dresses",
+        "name": "Dresses"
+    },{
+        "href": "shoes",
+        "name": "Shoes"
+    },{
+        "href": "pants",
+        "name": "Pants"
+    },{
+        "href": "bags",
+        "name": "Bags"
+    },{
+        "href": "hats",
+        "name": "Hats"
+    }],
+	"copyright":"Copyright 2017 All Rights Reserved by Bai Beibei"
+}]

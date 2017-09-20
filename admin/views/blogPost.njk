@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="container-fluid">
+<div class="col-md-8 col-md-offset-2">
+{{ macro.breadcrumb(title) }}
+  <form action="/blogPost" method="post">
+	{% for item in items %}
+		{{ macro.itemList(item) }}
+	{% endfor %}
+		{{ macro.itemBody(b="body") }}
+  </form>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ macro.htmlAce() }}
+{% endblock %}

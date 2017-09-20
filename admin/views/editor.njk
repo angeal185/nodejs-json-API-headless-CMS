@@ -1,0 +1,19 @@
+{% extends "layout.njk" %}
+
+{% block head %}
+<link rel="stylesheet" id="theme_stylesheet">
+<link rel="stylesheet" id="icon_stylesheet">
+{% endblock %}
+{% block sideNav %}
+{% include "includes/nav.njk" %}
+{% endblock %}
+
+{% block content %}
+{% include "includes/modals/modal3.njk" %}
+
+<div id="main" class="row bound">
+	{% include "includes/editor.njk" %}
+	{% include "includes/output.njk" %}
+	{% include "includes/schema.njk" %}
+</div>
+{% endblock %}

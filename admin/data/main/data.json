@@ -1,0 +1,166 @@
+{
+    "title": "working",
+    "sideNav": [{
+        "href": "/editor",
+        "name": "editor",
+        "icon": "cogs"
+    }, {
+        "href": "/schema",
+        "name": "schema",
+        "icon": "code"
+    }],
+	"post": [{
+        "href": "/blogPost",
+        "name": "create post",
+        "icon": "file-code-o"
+    }, {
+        "href": "/editPost",
+        "name": "edit post",
+        "icon": "code"
+    }, {
+        "href": "/deletePost",
+        "name": "Delete post",
+        "icon": "code"
+    }],
+	"item": [{
+        "href": "/itemPost",
+        "name": "Create item",
+        "icon": "file-code-o"
+    }, {
+        "href": "/editItem",
+        "name": "edit item",
+        "icon": "code"
+    }, {
+        "href": "/deleteItem",
+        "name": "delete item",
+        "icon": "code"
+    }],
+    "editorSideNav": [{
+        "href": "#",
+        "name": "post",
+        "id": "setschema3"
+    }, {
+        "href": "#",
+        "name": "post-list",
+        "id": "postList"
+    }, {
+        "href": "#",
+        "name": "item",
+        "id": "setschema2"
+    }, {
+        "href": "#",
+        "name": "item-list",
+        "id": "itemList"
+    }, {
+        "href": "#",
+        "name": "gallery",
+        "id": "setschema4"
+    }, {
+        "href": "#",
+        "name": "gulp config",
+        "id": "gulpConfig"
+    }],
+	"settingsNav": [{
+        "href": "/options",
+        "name": "options",
+		"icon": "cogs"
+    }],
+    "layoutData": [{
+        "href": "normal",
+        "name": "Normal"
+    }, {
+        "href": "grid",
+        "name": "Grid"
+    }],
+    "errorsData": [{
+        "href": "interaction",
+        "name": "On Interaction"
+    }, {
+        "href": "change",
+        "name": "On Field Change"
+    }, {
+        "href": "always",
+        "name": "Always"
+    }, {
+        "href": "never",
+        "name": "Never"
+    }],
+    "aceData": [{
+        "href": "monokai",
+        "name": "Monokai"
+    }, {
+        "href": "eclipse",
+        "name": "Eclipse"
+    }, {
+        "href": "chrome",
+        "name": "Chrome"
+    }, {
+        "href": "cobalt",
+        "name": "Cobalt"
+    }, {
+        "href": "twilight",
+        "name": "Twilight"
+    }, {
+        "href": "idle_fingers",
+        "name": "Idle Fingers"
+    }, {
+        "href": "solarized_dark",
+        "name": "Solarized Dark"
+    }],
+	"mdData": [{
+        "id": "html",
+        "name": "html"
+    }, {
+        "id": "xhtmlOut",
+        "name": "xhtmlOut"
+    }, {
+        "id": "breaks",
+        "name": "breaks"
+    }, {
+        "id": "linkify",
+        "name": "linkify"
+    }, {
+        "id": "typographer",
+        "name": "typographer"
+    }, {
+        "id": "_highlight",
+        "name": "highlight"
+    }, {
+        "id": "_strict",
+        "name": "CommonMark strict"
+    }],
+	"mdControl": [{
+        "id": "html"
+    }, {
+        "id": "src"
+    }, {
+        "id": "debug"
+    }],
+	"buildTasks": [
+        "build:CSS",
+		"build:Stylus",
+		"build:SCSS",
+		"build:LESS",
+		"build:coffee",
+		"build:templates",
+		"build:templates:min",
+		"build:js",
+		"build:sitemap",
+		"build:json",
+		"build:img",
+		"build:tar:dev",
+		"build:tar:prod",
+        "merge:post",
+        "merge:item",
+		"merge:todo",
+		"fileList:post",
+		"fileList:item",
+		"fileList:todo",
+		"config:replace",
+		"lint:js",
+		"lint:json",
+		"empty:dev",
+		"empty:prod"
+    ]
+	
+}

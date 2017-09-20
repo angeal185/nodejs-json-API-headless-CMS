@@ -1,0 +1,78 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid">
+{{ macro.breadcrumb(title, sub="Create") }}
+{# update unlock vault #}
+
+{% if encSettings %}
+{% else %}
+
+{# create new #}
+
+<div id="app">
+<h3 class="center">${title}</h3>
+<form id="updateDB" role="form" name="updateDB" action="/updateDB" method="post">
+<div class="row mb20">
+<div class="col-md-6 col-sm-12">
+	
+	<div class="form-group m20">
+		<input type="text" class="form-control" v-model="vaultTitle" debounce="500">
+		<div class="help-block">Title</div>
+	</div>
+	
+	<div class="form-group m20">
+		<input type="text" class="form-control" v-model="vaultUrl" debounce="500">
+		<div class="help-block">URL</div>
+	</div>
+	
+	<div class="form-group m20">
+		<input type="text" class="form-control" v-model="vaultPassword" debounce="500">
+		<div class="help-block">Password</div>
+	</div>
+	
+	<div class="form-group m20">
+		<input type="text" class="form-control" v-model="vaultApi" debounce="500">
+		<div class="help-block">API</div>
+	</div>
+</div>	
+<div class="col-md-6 col-sm-12">	
+	<pre id="pre1" class="w100 hljs m20 vault-pre col-md-6 col-sm-12">{
+	"title":"${vaultTitle}",
+	"url":"${vaultUrl}",
+	"password":"${vaultPassword}",
+	"api":"${vaultApi}"
+}
+</pre>
+</div>
+</div>
+<input id="vaultResult" class="form-control hidden" name="vaultResult" readonly>
+</form>
+<button type="btn" onclick="updateVault()" class="btn btn-primary btn-block mt30">Update</button>
+<pre id="pre4">{{dbFile | dump}}</pre>
+
+
+</div>
+{% endif %}
+</div>
+{% endblock %}
+
+
+{%block scripts%}
+<script>
+
+function updateVault(){
+	var vault = document.getElementById('pre4').innerHTML;
+	var finall = document.getElementById('pre1').innerHTML;
+	var	updateVaultFix = vault.substring(0, vault.length -1) + ',' + finall + ']';
+	document.getElementById('vaultResult').value = (updateVaultFix);
+	console.log(updateVaultFix);
+	document.getElementById("updateDB").submit();
+	
+};
+</script>
+{%endblock%}

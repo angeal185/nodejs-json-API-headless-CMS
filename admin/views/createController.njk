@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div id="linkSrc" class="container-fluid animated fadeInUp">
+{{ macro.breadcrumb(title, sub="Create") }}
+{% include "includes/createForm.njk" %}
+
+	<div class="col-md-6 col-sm-12 mb20">
+		<h3 class="center">${title}.js</h3>
+	<pre id="preBody" class="ace-monokai">
+	
+{% include "includes/tpl/createController.njk" %}
+
+	</pre>
+		<h3 class="center">index.js</h3>
+	<pre class="ace-monokai">
+&lt;script src="scripts/controllers/${title}Ctrl.js"&gt;&lt;/script&gt;
+	</pre>
+	</div>
+		
+
+</div>		
+{% endblock %}
+
+{% block scripts %}
+<script>
+var linkSrc = new Vue({
+  el: '#linkSrc',
+})
+
+function submitForm(){
+	document.getElementById('create{{title}}').submit();
+}
+</script>
+{% endblock %}

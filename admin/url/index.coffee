@@ -1,0 +1,14 @@
+appRoot = './'
+Front = appRoot + 'front/'
+Admin = appRoot + 'admin/'
+PublicData = Admin + 'public/'
+BlogData = PublicData + 'blog/'
+ItemData = PublicData + 'item'
+TodoData = PublicData + 'todo'
+module.exports.appRoot = appRoot
+module.exports.Front = Front
+module.exports.Admin = Admin
+module.exports.PublicData = PublicData
+module.exports.BlogData = BlogData
+module.exports.ItemData = ItemData
+module.exports.TodoData = TodoData

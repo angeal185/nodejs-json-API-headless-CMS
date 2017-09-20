@@ -1,0 +1,130 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+	
+<div class="container-fluid">
+{{ macro.breadcrumb(title) }}
+<h3 class="center">Create new {{tree.name}}</h3>
+		
+<form id="encryptBackup" data-toggle="validator" role="form" action="/encryptBackup" method="post">		
+	<div class="form-group">
+		<div class="col-md-6 col-sm-12 m20">
+			<button class="btn btn-primary btn-block" type="button" id="option1">Development</button>
+		</div>
+		<div class="form-group col-md-6 col-sm-12 m20">	
+			<button class="btn btn-primary btn-block" type="button" id="option2">Production</button>
+		</div>
+		<div class="form-inline row">
+			<div class="form-group col-md-6 col-sm-12 m20">
+				<input type="text" data-minlength="6" class="form-control w100" name="fileName" id="fileName" placeholder="Name" required>
+				<div class="help-block">Minimum of 6 characters</div>
+			</div>
+			<div class="form-group col-md-6 col-sm-12 m20">
+				<input type="text" class="form-control w100" data-minlength="4" name="dirUrl" id="dirUrl" placeholder="source" required readonly>
+				<div class="help-block">Select Development or Production files</div>
+			</div>
+		</div>
+		<div class="form-inline row">
+			<div class="form-group col-md-6 col-sm-12 m20">
+				<input type="password" data-minlength="8" class="form-control w100" id="passWord" name="passWord" placeholder="Password" required>
+				<div class="help-block">Minimum of 8 characters</div>
+			</div>
+			<div class="form-group col-md-6 col-sm-12 m20">
+					<input type="password" class="form-control  w100" data-match="#passWord" data-match-error="passwords don't match" placeholder="Confirm" required>
+					<div class="help-block with-errors"></div>
+			</div>
+		</div>
+		<div class="form-inline row">
+			<div class="form-group col-md-6 col-sm-12 m20">
+				<input type="text" class="form-control w100" placeholder="./admin/backup/" readonly>
+				<div class="help-block">Output location</div>
+			</div>
+			<div class="form-group col-md-6 col-sm-12">
+				<button type="submit" class="btn btn-primary btn-block mt30">Create</button>
+			</div>
+		</div>
+	</div>
+</form>	
+
+
+
+	<h3 id="itemLocation" class="center m20" name="{{tree.name}}">Saved {{tree.name}} files</h3>
+
+	<br>
+	
+
+	{% for item in tree.children %}
+	<div class="col-md-4">
+		<div class="panel tree-sub" style="padding: 1em">
+			<h4 class="item-name">{{item.name | upper}}</h4>
+			<p>path:<span> {{item.path}}</span></p>
+			<p>size:<span> {{item.size}}kb</span></p>
+			<p>type:<span> {{item.extension | replace(".", "") }}</span></p>
+			
+			<button id="{{item.name}}" class="btn btn-primary btn-small enc-btn tree-toggle" onclick="document.getElementById('decryptName').value = this.id" >Import</button>
+			
+			<button id="{{item.name}}" class="btn btn-primary btn-small enc-btn tree-toggle" onclick="document.getElementById('deleteName').value = this.id,document.getElementById('deleteBackup').submit()" >Delete</button>
+		</div>
+	</div>
+	
+{% endfor %}
+
+<h3 class="center m20">Import {{tree.name}}</h3>
+
+<form id="decryptBackup" data-toggle="validator" role="form" action="/decryptBackup" method="post">	
+	<div class="col-md-6 col-sm-12 m20">
+		<button class="btn btn-primary btn-block" type="button" id="option3">Development</button>
+	</div>
+	<div class="form-group col-md-6 col-sm-12 m20">	
+		<button class="btn btn-primary btn-block" type="button" id="option4">Production</button>
+	</div>
+	<div class="form-group col-md-6 col-sm-12 m20">
+		<input id="decryptName" name="decryptName" type="text" class="form-control  w100"  required readonly>
+		<div class="help-block">Import Files</div>
+	</div>
+	<div class="form-group col-md-6 col-sm-12 m20">
+		<input id="decryptLocation" name="decryptLocation" type="text" class="form-control  w100" required readonly>
+		<div class="help-block">Import Location</div>
+	</div>
+
+	<div class="form-group col-md-6 col-sm-12 m20">
+		<input type="password" data-minlength="8" class="form-control w100" id="importPass" name="importPass" placeholder="Password" required>
+		<div class="help-block">Minimum of 8 characters</div>
+	</div>
+	<div class="form-group col-md-6 col-sm-12 m20">
+		<input type="password" class="form-control  w100" data-match="#importPass" data-match-error="passwords don't match" placeholder="Confirm" required>
+		<div class="help-block with-errors"></div>
+	</div>
+		
+	<div class="form-group col-md-6 col-sm-12">
+		<button type="submit" class="btn btn-primary btn-block mt30">Import</button>
+	</div>
+</form>	
+
+<form id="deleteBackup" data-toggle="validator" role="form" action="/deleteBackup" method="post">	
+	<input id="deleteName" name="deleteName" type="text" class="form-control hidden">
+</form>		
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$( "#option1" ).click(function() {
+  $( "#dirUrl" ).val("./admin/public/front");
+});
+$( "#option2" ).click(function() {
+  $( "#dirUrl" ).val("./front");
+});
+$( "#option3" ).click(function() {
+  $( "#decryptLocation" ).val("./admin/public/front");
+});
+$( "#option4" ).click(function() {
+  $( "#decryptLocation" ).val("./front");
+});
+
+$("#submit").click( function() {
+   $('#encryptBackup').submit();
+}); 
+
+</script>
+{% endblock %}

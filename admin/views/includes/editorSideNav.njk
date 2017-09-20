@@ -1,0 +1,22 @@
+<li>
+	{{ macro.sideNavDrop(dropID="1",dropIcon="code",dropTitle="editor") }}
+	<ul id="drop1" class="collapse">
+		{% for item in gdata.editorSideNav %}
+			{{ macro.sideNav(item) }}
+		{% endfor %}
+	</ul>
+</li>		
+<li>
+	{{ macro.sideNavDrop(dropID="2",dropIcon="ravelry",dropTitle="api") }}
+	<ul id="drop2" class="collapse">
+		<li id="loadFlickr">
+			<a href="#">Flickr default</a>
+		</li>
+		<li id="setschema5">
+			<a href="#">Flickr converted</a>
+		</li>
+		<li>
+			<a href="#">Dropdown Item</a>
+		</li>
+	</ul>
+</li>

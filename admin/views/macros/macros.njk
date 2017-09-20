@@ -1,0 +1,197 @@
+{% macro breadcrumb(title,sub) %}
+<h1 class="center">{{sub}} {{title}} </h1>
+<ol class="breadcrumb">
+	<li>
+		<i class="fa fa-dashboard"></i>&nbsp;&nbsp;<a href="/">Dashboard</a>
+	</li>
+	<li class="active">
+		<i class="fa fa-code"></i>&nbsp;&nbsp;<span id="breadcrumb">{{title | capitalize}}</span>
+	</li>
+</ol>
+{% endmacro %}
+
+
+{% macro topNav(title,id,ico,click) %}
+<li data-toggle="tooltip" data-placement="bottom" title="{{title | upper}}">
+	<a id="{{id}}" onclick="{{click}}"><i class="fa fa-2x  fa-{{ico}}"></i></a>
+</li>
+{% endmacro %}
+
+{% macro sideNavDrop(dropID,dropIcon,dropTitle) %}
+<a href="javascript:;" data-toggle="collapse" data-target="#drop{{dropID}}"><i class="fa fa-fw fa-{{dropIcon}}"></i> {{dropTitle | capitalize}} <i class="fa fa-fw fa-caret-down"></i></a>
+{% endmacro %}
+
+{% macro sideNav(item) %}
+	<li id="{{item.id}}">
+		<a href="{{item.href}}">{{item.name | capitalize}}</a>
+	</li>
+{% endmacro %}
+
+{% macro sideNavMain(item,h,i,n) %}
+<li><a href="{{item.href}}{{h}}"><i class="fa fa-fw fa-{{item.icon}}{{i}}"></i> {{n}}{{item.name | capitalize}}</a></li>
+{% endmacro %}
+
+{% macro options(item) %}
+	<option value="{{item.href}}">{{item.name}}</option>
+{% endmacro %}
+
+{% macro op(item) %}
+<option>{{item}}</option>
+{% endmacro %}
+
+{% macro opVal(item) %}
+<option value="{{item}}"></option>
+{% endmacro %}
+
+{% macro days(item) %}
+<div class='days checkbox {{item.day}}'>
+	<input name='open{{item.name}}' id="open{{item.name}}" class='openDays' type='checkbox' data-day='{{item.day}}'>
+	<label for='open{{item.name}}'>{{item.day}}</label>
+</div>
+{% endmacro %}
+
+{% macro formBtn(n) %}
+<div class="col-md-6">
+	<button type="submit"  id="form" class="btn btn-primary btn-lg btn-block btn-edit">{{n}}</button>
+</div>
+{% endmacro %}
+
+{% macro jsonSearch(i) %}
+<h2 class="center">Search</h2>
+<div class="col-md-12">
+	<div class="form-group">
+		<input class="form-control input-lg" id="jsonSearch{{i}}" type="search" placeholder="Search..."/>
+	</div>
+	<div id="jsonSearchresults"></div>
+</div>
+{% endmacro %}
+
+{% macro editForm(i,a) %}
+<div class="form-group col-md-6">
+	<input id="toLoad" type="text" name="toLoad" placeholder="id" class="form-control" style="height: 80px;
+text-align: center;" readonly/>
+</div>
+<div class="col-md-6">
+	<button type="submit"  onclick="editSingle{{i}}()" class="btn btn-primary btn-lg btn-block btn-edit">Edit</button>
+</div>
+<div class="col-md-8 col-md-offset-2 well">
+	<form action="/{{a}}Post" method="post" id="editSingleOutput"></form>
+</div>
+{% endmacro %}
+
+{% macro deleteItemForm(url) %}
+<form action="/delete{{url}}" method="post">
+	<div class="form-group col-md-6">
+	  <input id="todelete" type="text" name="todelete" placeholder="id" class="form-control" style="height: 80px;
+	text-align: center;" readonly />
+	</div>
+	{{ formBtn(n="Delete") }}
+</form>
+{% endmacro %}
+
+{% macro deleteBtn(item) %}
+<div class="col-md-4">
+	<button type="button" onclick="document.getElementById('todelete').value = this.innerHTML;" class="btn btn-primary btn-lg btn-block">{{ item }}</button>
+</div>
+{% endmacro %}
+
+{% macro itemList(item) %}
+<div class="form-group">
+  <label for="{{item.id}}">{{item.id | capitalize}}</label>
+  <input id="{{item.id}}" type="text" name="{{item.id}}" placeholder="{{item.info | capitalize}}" class="form-control"/>
+</div>
+{% endmacro %}
+
+{% macro itemBody(b) %}
+<div class="form-group">
+  <label for="{{b}}">{{b | capitalize}}</label>
+  <textarea data-editor id="{{b}}" type="text" name="{{b}}" placeholder="{{'description' | capitalize}}" class="form-control"></textarea>
+</div>
+<button type="submit" id="form" class="btn btn-default">Submit</button>
+{% endmacro %}
+
+{% macro optionBlock(i,t) %}
+<div class="row">
+	<div class="col-md-6">
+		<button id="{{i}}Btn" type="button" class='btn btn-primary btn-lg btn-block btn-edit mt10'>{{t}}</button>
+	</div>
+	<div class="form-group col-md-6">
+		<input id="{{i}}" type="text" name="{{i}}" placeholder="{{i}}" value="(config.{{i}})" class="form-control" style="height: 80px;
+	text-align: center;" readonly>
+	</div>
+</div>
+{% endmacro %}
+
+{% macro addressInfo(l) %}
+<input type="hidden" value="PostalAddress" data-path="{{l}}address.@type">
+<label for="address">Address:</label>
+<input class="address form-control" name="address" type="text" data-path="{{l}}address.streetAddress">
+<label for="po-box">PO Box:</label>
+<input class="po-box form-control" name="po-box" type="text" data-path="{{l}}address.postOfficeBoxNumber">
+<label for="addressLocality">City:</label>
+<input class="addressLocality form-control" name="addressLocality" type="text" data-path="{{l}}address.addressLocality">
+<label for="addressRegion">State/Region:</label>
+<input class="addressRegion form-control" name="addressRegion" type="text" data-path="{{l}}address.addressRegion">
+<label for="postalCode">Zip/Postal Code:</label>
+<input class="postalCode form-control" name="postalCode" type="text" data-path="{{l}}address.postalCode">
+<label for="addressCountry">Country:</label>
+<input class="addressCountry form-control" name="addressCountry" type="text" data-path="{{l}}address.addressCountry">
+{% endmacro %}
+
+{% macro saveSchema(func) %}
+<h2>Save schema to file</h2>
+<div class="form-group">
+	<label for="schema-fileName">File name</label>
+	<input type="text" class="form-control" id="schema-fileName" value="Schema" name="Schema" placeholder="Enter file name">
+</div>
+<button class="btn btn-default btn-block" onclick="{{func}}()" type="submit">Download</button>
+{% endmacro %}
+
+{% macro geo() %}
+<label for="geoOption">Include Lat/Long coordinates for better location</label>
+<br/>
+<input type='hidden' data-path='geo.@type' value='GeoCoordinates'>
+<label for="geoLat">Latitude:</label>
+<input type='text' class='geoLat form-control' name='geoLat' data-path='geo.latitude'>
+<label for="geoLong">Longitude:</label>
+<input type='text' class='geoLong form-control' name='geoLong' data-path='geo.longitude'>
+<label for="hasMap">Include a Map</label>
+<input class="hasMap form-control" name="hasMap" type="text" data-path="hasMap">
+{% endmacro %}
+
+{% macro schemaName() %}
+<label for="name">Name:</label>
+<input class="name form-control" name="name" type="text" data-path="name">
+<label for="url">URL:</label>
+<input class="url form-control" name="url" type="text" data-path="url">
+<label for="sameAs" style="display: none;">sameAs URL:</label>
+<button class="addUrl btn btn-primary">Add sameAs</button>
+<button class="removeUrl btn btn-primary" style="display: none;">Remove sameAs</button>
+<input type="hidden" data-path="sameAs" class="sameAsData form-control">
+<label for="logo">Logo (use a URL to your logo image):</label>
+<input class="logo form-control" name="logo" type="text" data-path="logo">
+<label for="image">Image (use a URL to your an image of your business):</label>
+<input class="image form-control" name="image" type="text" data-path="image">
+<label for="desription">Description:</label>
+<textarea class="form-control" rows="5" cols="50" name="description" data-path="description" data-editor></textarea>
+{% endmacro %}
+
+{% macro htmlAce() %}
+<script>htmlAce();</script>
+{% endmacro %}
+
+
+
+{% macro createBtn(click) %}
+<div class="col-md-6 col-sm-12 mb20">
+	<button type="submit" onclick="{{click}}()" class="btn btn-default btn-block">Save</button>
+</div>
+{% endmacro %}
+
+{% macro getsitecontrol() %}
+<script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/98089/script.js');
+</script>
+{% endmacro %}

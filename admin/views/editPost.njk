@@ -1,0 +1,11 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+<div class="container-fluid">
+{{ macro.breadcrumb(title) }}
+	{{ macro.jsonSearch(i="Post") }}
+	{{ macro.editForm(i="Post",a="blog") }}
+</div>
+{% endblock %}
+
+	

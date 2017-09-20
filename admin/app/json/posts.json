@@ -1,0 +1,25 @@
+[{
+    "date": "1499484421",
+    "author": "admin",
+    "slug": "my-first-post",
+    "title": "My First Post",
+    "img": "images/posts/1.jpg",
+    "body": "<p>Duis mollis, est non commodo luctus</p>",
+    "category": "a"
+}, {
+    "date": "1499484421",
+    "author": "admin",
+    "slug": "my-second-post",
+    "title": "My Second Post",
+    "img": "images/posts/1.jpg",
+    "body": "<p>Duis mollis, est non commodo luctus</p>",
+    "category": "b"
+}, {
+    "date": "1499484421",
+    "author": "admin",
+    "slug": "my-third-post",
+    "title": "And This Is My Third Post",
+    "img": "images/posts/1.jpg",
+    "body": "<p>Duis mollis, est non commodo luctus</p>",
+    "category": "c"
+}]

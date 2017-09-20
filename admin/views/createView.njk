@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div id="linkSrc" class="container-fluid animated fadeInUp">
+	{{ macro.breadcrumb(title, sub="Create") }}
+	<form id="create{{title}}" class="col-md-6 col-sm-12" action="/create{{title}}" method="post">
+		<div class="mb20">
+			<small>Title</small><br>
+			<input id="Title" class="form-control" type="text" name="Title" v-model="title" />
+		</div>
+		<div class="mb20">
+			<small>controller</small><br>
+			<input id="controller" class="form-control" type="text" name="controller" v-model="controller" />
+		</div>
+		
+	</form>
+
+	<div class="col-md-6 col-sm-12 mb20">
+	<small>Output</small><br>
+	<pre id="preBody" class="ace-monokai">
+.when('/${title}', {
+        templateUrl: 'views/${title}.html',
+        controller: '${controller}Ctrl'
+      })
+</pre>
+		<h3 class="center">${title}.html</h3>
+	</div>
+		
+
+</div>		
+{% endblock %}
+
+{% block scripts %}
+<script>
+var linkSrc = new Vue({
+  el: '#linkSrc',
+})
+
+function submitForm(){
+	document.getElementById('create{{title}}').submit();
+}
+</script>
+{% endblock %}

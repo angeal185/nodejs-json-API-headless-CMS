@@ -1,0 +1,80 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid">
+{{ macro.breadcrumb(title, sub="Edit") }}
+
+{# update unlock vault #}
+
+{% if encSettings %}
+{% else %}
+
+{# update vault and encrypt #}
+
+<div id="vaultPass">
+<h3 class="center">${title}</h3>
+<form id="updateDB" role="form" action="/updateDB" method="post">
+{% for item in dbFile %}
+<div class="row mb20">
+	<div class="col-md-6 col-sm-12">
+		<div class="form-group m20">
+			<input type="text" class="form-control" value="{{item.title}}" v-model="vault{{item.title}}" debounce="500">
+			<div class="help-block">Title</div>
+		</div>
+		
+		<div class="form-group m20">
+			<input type="text" class="form-control" value="{{item.url}}" v-model="vault{{item.url}}" debounce="500">
+			<div class="help-block">URL</div>
+		</div>
+		
+		<div class="form-group m20">
+			<input type="text" class="form-control" value="{{item.password}}" v-model="vault{{item.password}}" debounce="500">
+			<div class="help-block">Password</div>
+		</div>
+		
+		<div class="form-group m20">
+			<input type="text" class="form-control" value="{{item.api}}" v-model="vault{{item.api}}" debounce="500">
+			<div class="help-block">API</div>
+		</div>
+	</div>
+
+<div class="col-md-6 col-sm-12">	
+	<pre id="pre1" class="w100 hljs m20 vault-pre col-md-6 col-sm-12">{
+	"title":"${vault{{item.title}}}",
+	"url":"${vault{{item.url}}}",
+	"password":"${vault{{item.password}}}",
+	"api":"${vault{{item.api}}}"
+},
+</pre>
+</div>
+</div>
+{% endfor %}
+<pre id="pre3" class="hidden">{%- for item in dbFile -%}{"title":"${vault{{item.title}}}","url":"${vault{{item.url}}}","password":"${vault{{item.password}}}","api":"${vault{{item.api}}}"},{%- endfor -%}</pre>
+<input id="vaultResult" class="form-control hidden" name="vaultResult" readonly>
+</form>
+</div>
+
+<button type="btn" onclick="submitVault()" class="btn btn-primary btn-block mt30">Update</button>
+
+{% endif %}
+</div>
+{% endblock %}
+
+
+{%block scripts%}
+<script>
+function submitVault(){
+	var updateVault = document.getElementById('pre3').innerHTML;
+	var	updateVaultFix = '[' + updateVault.substring(0, updateVault.length -1) + ']';
+	var finall = document.getElementById('vaultResult').value;
+	document.getElementById('vaultResult').value = (updateVaultFix);
+	//console.log(finall);
+	document.getElementById("updateDB").submit();
+	
+};
+</script>
+{%endblock%}

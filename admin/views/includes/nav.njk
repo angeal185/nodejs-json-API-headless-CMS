@@ -1,0 +1,215 @@
+
+{# Sidebar Menu Items #}
+	<div id="sideNavBar" class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav side-nav">
+			{{ macro.sideNavMain(h="/",i="dashboard",n="Dashboard") }}
+			<li>
+				{{ macro.sideNavDrop(dropID="4",dropIcon="code",dropTitle="Blog post") }}
+				<ul id="drop4" class="collapse">
+					{% for item in gdata.post %}
+						{{ macro.sideNav(item) }}
+					{% endfor %}
+				</ul>
+			</li>
+			
+			<li>
+				{{ macro.sideNavDrop(dropID="5",dropIcon="code",dropTitle="Store item") }}
+				<ul id="drop5" class="collapse">
+					{% for item in gdata.item %}
+						{{ macro.sideNav(item) }}
+					{% endfor %}
+				</ul>
+			</li>
+			
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#drop7">
+					<i class="fa fa-fw fa-code"></i> Page manager <i class="fa fa-fw fa-caret-down"></i>
+				</a>
+
+				<ul id="drop7" class="collapse">
+					<li id="">
+						<a href="/page/pages"> Pages </a>
+					</li>
+					<li id="">
+						<a href="/page/layouts"> layouts </a>
+					</li>
+					<li id="">
+						<a href="/page/includes"> includes </a>
+					</li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#drop8">
+					<i class="fa fa-fw fa-code"></i> styles manager <i class="fa fa-fw fa-caret-down"></i>
+				</a>
+
+				<ul id="drop8" class="collapse">
+					<li id="">
+						<a href="/page/css"> Css </a>
+					</li>
+					{%- if config.enableStylus -%}
+					<li id="">
+						<a href="/page/stylus"> Stylus </a>
+					</li>
+					{%- endif -%}
+					{%- if config.enableScss -%}
+					<li id="">
+						<a href="/page/scss"> Scss </a>
+					</li>
+					{%- endif -%}
+					{%- if config.enableLess -%}
+					<li id="">
+						<a href="/page/less"> Less </a>
+					</li>
+					{%- endif -%}
+				</ul>
+			</li>
+			
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#drop9">
+					<i class="fa fa-fw fa-code"></i> scripts manager <i class="fa fa-fw fa-caret-down"></i>
+				</a>
+
+				<ul id="drop9" class="collapse">
+				
+					<li id="">
+						<a href="/create/controller"> Create controller </a>
+					</li>
+					<li id="">
+						<a href="/create/directive"> Create directive </a>
+					</li>
+					
+					<li id="">
+						<a href="/page/main"> Edit main </a>
+					</li>
+					<li id="">
+						<a href="/page/controllers"> Edit controllers </a>
+					</li>
+					<li id="">
+						<a href="/page/components"> Edit components </a>
+					</li>
+					<li id="">
+						<a href="/page/directives"> Edit directives </a>
+					</li>
+					<li id="">
+						<a href="/page/services"> Edit services </a>
+					</li>
+					<li id="">
+						<a href="/page/vendor"> Edit vendor </a>
+					</li>
+					
+				</ul>
+			</li>
+			
+			{% for item in gdata.sideNav %}
+				{{ macro.sideNavMain(item) }}
+			{% endfor %}
+			
+			{% if editorURL %}
+			{% include "includes/editorSideNav.njk" %}
+			{% endif %}
+			
+			{% for item in gdata.settingsNav %}
+				{{ macro.sideNavMain(item) }}
+			{% endfor %}
+
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#drop6">
+				<i class="fa fa-fw fa-wrench"></i> tools <i class="fa fa-fw fa-caret-down"></i>
+			</a>
+
+				<ul id="drop6" class="collapse">
+					<li id="">
+						<a href="/backup"> Backup </a>
+					</li>
+					<li id="">
+						<a href="/todo"> Todo </a>
+					</li>
+					<li id="">
+						<a href="/createTodo"> Create todo </a>
+					</li>
+					{%- if (encSettings == false) and (config.passwordSafe) -%}
+					<li id="">
+						<a href="/vault"> Vault </a>
+					</li>
+					<li id="">
+						<a href="/createVault"> Create Vault entry </a>
+					</li>
+					{%- endif -%}
+				</ul>
+			</li>
+			{%- if config.cmsEditor -%}
+			<li>
+				<a href="javascript:;" data-toggle="collapse" data-target="#drop10">
+					<i class="fa fa-fw fa-wrench"></i> CMS editor <i class="fa fa-fw fa-caret-down"></i>
+				</a>
+
+				<ul id="drop10" class="collapse">
+					<li id="">
+						<a href="/cms/template"> Create template </a>
+					</li>
+					{%- if config.buildTasks -%}
+					<li id="">
+						<a href="/cms/buildTasks"> Build tasks </a>
+					</li>
+					{%- endif -%}
+					<li id="">
+						<a href="/createTodo"> Create todo </a>
+					</li>
+					<li id="">
+						<a href="/vault"> Vault </a>
+					</li>
+					<li id="">
+						<a href="/createVault"> Create Vault entry </a>
+					</li>
+					
+				</ul>
+			</li>
+			{%- endif -%}
+		</ul>
+	</div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	
+	{# Brand and toggle get grouped #}
+	<div class="navbar-header">
+
+		<a id="navToggle" class="navbar-brand"></a>
+	</div>
+	{# Top Menu Items #}
+	<ul class="nav navbar-right top-nav">
+		{% if (schemaURL) or (optionsURL) %}
+		{% else %}
+		{{ macro.topNav(title="Markdown Editor",id="modelBtn2",ico="pencil",click="open2()") }}
+		{{ macro.topNav(title="timestamp generator",id="modelBtn",ico="clock-o",click="open1(),getDate(),getTimestamp()") }}
+		{% endif %}
+		
+		{% if editorURL %}
+		{{ macro.topNav(title="flickr api generator",id="modelBtn3",ico="flickr",click="open3()") }}
+		{% endif %}
+		
+		{%- if config.passwordSafe -%}
+		<li data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Vault">
+			<a id="vaultModal" data-toggle="modal" data-target=".vaultModal"><i class="fa fa-2x  fa-lock"></i></a>
+		</li>
+		{% endif %}
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-2x fa-cogs"></i><b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>

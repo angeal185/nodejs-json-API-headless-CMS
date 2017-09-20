@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "memeye",
+        "scope": null,
+        "escapedName": "memeye",
+        "name": "memeye",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\git\\angular-flat-file-blog"
+    ]
+  ],
+  "_from": "memeye@latest",
+  "_id": "memeye@1.0.3",
+  "_inCache": true,
+  "_location": "/memeye",
+  "_nodeVersion": "7.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/memeye-1.0.3.tgz_1489910193453_0.45565068535506725"
+  },
+  "_npmUser": {
+    "name": "jerryc",
+    "email": "huangjerryc@gmail.com"
+  },
+  "_npmVersion": "4.1.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "memeye",
+    "scope": null,
+    "escapedName": "memeye",
+    "name": "memeye",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/memeye/-/memeye-1.0.3.tgz",
+  "_shasum": "4a519b9836adc4f4299883aebd2f285ec94a1bc0",
+  "_shrinkwrap": null,
+  "_spec": "memeye",
+  "_where": "C:\\git\\angular-flat-file-blog",
+  "author": {
+    "name": "JerryC",
+    "url": "huangjerryc@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/JerryC8080/Memeye/issues"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "socket.io": "^1.7.3"
+  },
+  "description": "A memory monitor and dashboard for Node.js application on development.",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "4a519b9836adc4f4299883aebd2f285ec94a1bc0",
+    "tarball": "https://registry.npmjs.org/memeye/-/memeye-1.0.3.tgz"
+  },
+  "gitHead": "caf84bbaff719ada0b02226694697c03885be240",
+  "homepage": "https://github.com/JerryC8080/Memeye#readme",
+  "keywords": [
+    "memory",
+    "monitor",
+    "dashboard"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "jerryc",
+      "email": "huangjerryc@gmail.com"
+    }
+  ],
+  "name": "memeye",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JerryC8080/Memeye.git"
+  },
+  "scripts": {
+    "test": "istanbul cover node_modules/.bin/_mocha -- test/bootstarp.js test/unit/*.test.js"
+  },
+  "version": "1.0.3"
+}
