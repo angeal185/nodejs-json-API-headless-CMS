@@ -1,0 +1,188 @@
+{
+    "days": [{
+        "day": "Mo",
+        "name": "Mon"
+    }, {
+        "day": "Tu",
+        "name": "Tue"
+    }, {
+        "day": "We",
+        "name": "Wed"
+    }, {
+        "day": "Th",
+        "name": "Thu"
+    }, {
+        "day": "Fr",
+        "name": "Fri"
+    }, {
+        "day": "Sa",
+        "name": "Sat"
+    }, {
+        "day": "Su",
+        "name": "Sun"
+    }],
+    "hours": [{
+        "href": "01:00",
+        "name": "00:00"
+    }, {
+        "href": "01:00",
+        "name": "00:30"
+    }, {
+        "href": "01:00",
+        "name": "01:00"
+    }, {
+        "href": "01:30",
+        "name": "01:30"
+    }, {
+        "href": "02:00",
+        "name": "02:00"
+    }, {
+        "href": "02:30",
+        "name": "02:30"
+    }, {
+        "href": "03:00",
+        "name": "03:00"
+    }, {
+        "href": "03:30",
+        "name": "03:30"
+    }, {
+        "href": "04:00",
+        "name": "04:00"
+    }, {
+        "href": "04:30",
+        "name": "04:30"
+    }, {
+        "href": "05:00",
+        "name": "05:00"
+    }, {
+        "href": "05:30",
+        "name": "05:30"
+    }, {
+        "href": "06:00",
+        "name": "06:00"
+    }, {
+        "href": "06:30",
+        "name": "06:30"
+    }, {
+        "href": "07:00",
+        "name": "07:00"
+    }, {
+        "href": "07:30",
+        "name": "07:30"
+    }, {
+        "href": "08:00",
+        "name": "08:00"
+    }, {
+        "href": "08:30",
+        "name": "08:30"
+    }, {
+        "href": "09:00",
+        "name": "09:00"
+    }, {
+        "href": "09:30",
+        "name": "09:30"
+    }, {
+        "href": "10:00",
+        "name": "10:00"
+    }, {
+        "href": "10:30",
+        "name": "10:30"
+    }, {
+        "href": "11:00",
+        "name": "11:00"
+    }, {
+        "href": "11:30",
+        "name": "11:30"
+    }, {
+        "href": "12:00",
+        "name": "12:00"
+    }, {
+        "href": "12:30",
+        "name": "12:30"
+    }, {
+        "href": "13:00",
+        "name": "13:00"
+    }, {
+        "href": "13:30",
+        "name": "13:30"
+    }, {
+        "href": "14:00",
+        "name": "14:00"
+    }, {
+        "href": "14:30",
+        "name": "14:30"
+    }, {
+        "href": "15:00",
+        "name": "15:00"
+    }, {
+        "href": "15:30",
+        "name": "15:30"
+    }, {
+        "href": "16:00",
+        "name": "16:00"
+    }, {
+        "href": "16:30",
+        "name": "16:30"
+    }, {
+        "href": "17:00",
+        "name": "17:00"
+    }, {
+        "href": "17:30",
+        "name": "17:30"
+    }, {
+        "href": "18:00",
+        "name": "18:00"
+    }, {
+        "href": "18:30",
+        "name": "18:30"
+    }, {
+        "href": "19:00",
+        "name": "19:00"
+    }, {
+        "href": "19:30",
+        "name": "19:30"
+    }, {
+        "href": "20:00",
+        "name": "20:00"
+    }, {
+        "href": "20:30",
+        "name": "20:30"
+    }, {
+        "href": "21:00",
+        "name": "21:00"
+    }, {
+        "href": "21:30",
+        "name": "21:30"
+    }, {
+        "href": "22:00",
+        "name": "22:00"
+    }, {
+        "href": "22:30",
+        "name": "22:30"
+    }, {
+        "href": "23:00",
+        "name": "23:00"
+    }, {
+        "href": "23:30",
+        "name": "23:30"
+    }, {
+        "href": "23:59",
+        "name": "24:00"
+    }],
+    "event":["Event","BusinessEvent","ChildrensEvent","ComedyEvent","DanceEvent","EducationEvent","Festival","FoodEvent","LiteraryEvent","MusicEvent","SaleEvent","SocialEvent","SportsEvent","TheaterEvent","UserInteraction","VisualArtsEvent"],
+    "auto": ["Automotive Business", "Auto Body Shop", "Auto Dealer", "Auto Parts Store", "Auto Rental", "Auto Repair", "Auto Wash", "Gas Station", "Motorcycle Dealer", "Motorcycle Repair"],
+    "emergency": ["Emergency Service", "Fire Station", "Hospital", "Police Station"],
+    "entertainment": ["Entertainment Business", "Adult Entertainment", "Amusement Park", "Art Gallery", "Casino", "Comedy Club", "Movie Theater", "Night Club"],
+    "financial": ["Accounting Service", "Automated Teller", "Bank Or Credit Union", "Insurance Agency"],
+    "food": ["Food Establishment", "Bakery", "Bar Or Pub", "Brewery", "Cafe Or Coffee Shop", "Fast Food Restaurant", "Ice Cream Shop", "Restaurant", "Winery"],
+    "health": ["Health And Beauty Business", "Beauty Salon", "Day Spa", "Hair Salon", "Health Club", "Nail Salon", "Tattoo Parlor"],
+    "home": ["Home And Construction Business", "Electrician", "General Contractor", "HVAC Business", "House Painter", "Locksmith", "Moving Company", "Plumber", "RoofingContractor"],
+    "lodging": ["Lodging Business", "Bed And Breakfast", "Hostel", "Hotel", "Motel"],
+    "medical": ["Dentist", "Diagnostic Lab", "Hospital", "Medical Clinic", "Optician", "Pharmacy", "Physician", "Veterinary Care"],
+    "services": ["Professional Service", "Accounting Service", "Attorney", "Dentist", "Electrician", "General Contractor", "House Painter", "Locksmith", "Notary", "Plumber", "Roofing Contractor"],
+    "store1": ["Radio Station", "Real Estate Agent", "Recycling Center", "Self Storage", "Shopping Center"],
+    "store2": ["Television Station", "Tourist Information Center", "Travel Agency"],
+    "sports": ["Sports Activity Location", "Bowling Alley", "Exercise Gym", "Golf Course", "Health Club", "Public Swimming Pool", "Ski Resort", "Sports Club", "Stadium Or Arena", "Tennis Complex"],
+    "stores": ["Store", "Auto Parts Store", "Bike Store", "Book Store", "Clothing Store", "Computer Store", "Convenience Store", "Department Store", "Electronics Store", "Florist", "Furniture Store", "Garden Store", "Grocery Store", "Hardware Store", "Hobby Shop", "Home Goods Store", "Jewelry Store", "Liquor Store", "Mens Clothing Store", "Mobile Phone Store", "Movie Rental Store", "Music Store", "Office Equipment Store", "Outlet Store", "Pawn Shop", "Pet Store", "Shoe Store", "Sporting Goods Store", "Tire Shop", "Toy Store", "Wholesale Store"],
+    "org": ["Organization", "Corporation", "Educational Organization", "Government Organization", "Local Business", "NGO", "Performing Group", "SportsTeam"]
+}

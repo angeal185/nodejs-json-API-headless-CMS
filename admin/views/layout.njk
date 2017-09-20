@@ -1,0 +1,118 @@
+{% import "macros/macros.njk" as macro %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>json template generator</title>
+	<link href="/app/img/favicon.ico" rel="shortcut icon">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<style>
+.breadcrumb li a,
+.breadcrumb li:first-child i
+ {
+    color: #CDDC39;
+}
+.breadcrumb>li+li:before!important {
+    color: #151515;
+}
+.pl0{padding-left:0!important;}
+.pl0{padding-right:0!important;}
+.l0{left:0!important;}
+.r0{right:0!important;}
+#navToggle {
+      position: absolute;
+    margin-top: 4px!important;
+    width: 38px;
+    height: 25px;
+    left: 30px;
+    margin: 0 auto;
+    margin-top: 25%;
+    background: ghostwhite;
+    box-shadow: 0px 0px 20px white;
+    border-radius: 50%;
+	  -webkit-animation: fly 10s infinite;
+  -moz-animation: fly 10s infinite;
+  -o-animation: fly 10s infinite;
+  animation: fly 10s infinite;
+}
+@-webkit-keyframes fly {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 10px) scale(1.3);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+}
+#navToggle:hover {
+    background: #697f8e;
+    box-shadow: 0px 0px 20px #afbff7;
+	cursor:display:none;
+	
+	}
+	
+#g-syjv3t > a{display:none}
+	</style>
+{% include "includes/css.njk" %} 
+{% block head %}{% endblock %}
+</head>
+<body onload="loader()">
+<div id="loader"></div>
+{% if (schemaURL) or (optionsURL) %}
+{% else %}
+{% include "includes/modals/modal1.njk" %}
+{% include "includes/modals/modal2.njk" %}
+{% endif %}
+
+<div id="wrapper" class="animate-bottom ">
+{% include "includes/nav.njk" %}
+<div id="page-wrapper" class="mt-80">
+{% block content %}{% endblock %}
+</div>
+{#% include "includes/footer.njk" %#}
+{% include "includes/debugToolbar.njk" %}
+
+{% include "includes/toTop.njk" %}
+</div>
+
+{% include "includes/js.njk" %}
+{% block scripts %}{% endblock  %}
+{% include "includes/modals/vault.njk" %}
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+
+$("#navToggle").click(function(){
+    $("#sideNavBar").toggle();
+	$("#wrapper").toggleClass("pl0");
+	$("#target").toggleClass("l0");
+});
+
+$( ".consoleToggle" ).click(function() {
+  $( "#target" ).toggle( "slow", function() {
+    // Animation complete.
+  });
+});
+</script>
+{#{ macro.getsitecontrol() }#}
+</body>
+</html>

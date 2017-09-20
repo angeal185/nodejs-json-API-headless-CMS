@@ -1,0 +1,60 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+
+<div class="container-fluid mb60 tree-view">
+{{ macro.breadcrumb(title,sub="Edit") }}
+	<h3 id="itemLocation" class="center" name="{{tree.name}}">{{tree.name}}</h3>
+<br>
+<div class="row">
+{% for item in tree.children %}
+<div class="col-md-4">
+	<div class="panel tree-sub" style="padding: 1em">
+		<h4 class="item-name">{{item.name | upper}}</h4>
+		<p>path:<span> {{item.path}}</span></p>
+		<p>size:<span> {{item.size}}kb</span></p>
+		<p>type:<span> {{item.extension | replace(".", "") }}</span></p>
+		<button id="{{item.name}}" type="button" class="btn btn-primary btn-small tree-btn tree-toggle" onclick="document.getElementById('toRecycle').value =  this.id,enableRecycle()" >Stage delete</button>
+	</div>
+</div>
+{% endfor %}
+</div>
+<div class="row">
+<form id="recycle" role="form" action="/recycle" method="post">
+	
+	<div class="form-group col-md-6">
+	  <input id="toRecycle" type="text" name="toRecycle" placeholder="Delete single" class="form-control displayInput" readonly />
+	</div>
+	<div class="col-md-6">
+		<button type="submit" id="submit" class="btn btn-primary btn-lg btn-block btn-edit mt10 disabled">Commit</button>
+	</div>
+
+</form>{%raw%}{{tree}}{%endraw%}
+</div>
+<div class="row">
+<form id="recycleAll" role="form" action="/recycleAll" method="post">
+	
+	<div class="form-group col-md-6">
+	  <input  type="text" name="toRecycle" placeholder="Delete all" class="form-control displayInput" readonly />
+	</div>
+	
+	<div class="col-md-6">
+		<button type="submit" class="btn btn-primary btn-lg btn-block btn-edit mt10">Commit</button>
+	</div>
+
+</form>
+</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+
+function enableRecycle() {
+	document.getElementById("submit").classList.remove("disabled");
+};
+</script>
+{% endblock %}

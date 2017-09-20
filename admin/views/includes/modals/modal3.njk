@@ -1,0 +1,16 @@
+<div id="modelDiv3" class="container animated fadeInUp">
+	<h2>load from Flickr API</h2>
+	<div class="container">
+	  <h3 class="center">Flickr url list converted from api response</h3>
+		  <h2>Save to json file</h2>
+		  <div class="form-group">
+			<label for="input-flkr">File name</label>
+			<input class="form-control" id="input-flkr" type="text" value="flikrData" placeholder="Enter file name"/>
+		  </div>
+		  <button class="btn btn-default btn-block" onclick="saveFlkrJson()" type="submit">Download</button><br/>
+		  <hr/>
+		  <h4 class="center">Final Output</h4>
+		  <pre class="left-align ace-monokai"><code id="flkrOutput" class="json"></code></pre><br/>
+	</div>
+	<button class="btn btn-default mt10 shrink" onclick="closeMdl3()">Close</button>
+</div>

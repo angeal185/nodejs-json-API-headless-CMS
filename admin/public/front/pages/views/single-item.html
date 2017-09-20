@@ -1,0 +1,147 @@
+<breadcrumbs></breadcrumbs>
+
+		<div class="container  mg-40">
+			<div class="single-product">
+				<div class="product">
+					<div class="col-md-4 col-s-12">
+
+						<!-- Product Single - Gallery
+						============================================= -->
+						<div class="product-image">
+							<div class="product-image">
+					<img src="{{items.img[0]}}">
+					<div class="sale-flash">{{item.label}}</div>
+				</div>
+							<div class="sale-flash">{{items.label}}</div>
+						</div><!-- Product Single - Gallery End -->
+
+					</div>
+
+					<div class="col-md-6 col-s-12 product-desc">
+
+						<div class="product-title"><h3>{{items.name}}</h3></div>
+						<div class="product-price">
+							<del>{{items.wasPrice | currency:"AUD$"}}</del> 
+							<ins>{{items.price | currency:"AUD$"}}</ins>
+						</div>
+
+						<rating value="items.stars" max="5" style="float:right"></rating>
+
+						<div class="clear"></div>
+						<div class="line"></div>
+
+						<!-- Product Single - Quantity & Cart Button
+						============================================= -->
+						<form class="cart nobottommargin clearfix" method="post" enctype='multipart/form-data'>
+							<button type="submit" class="add-to-cart button nomargin">Add to cart</button>
+							
+							<button type="button" class="snipcart-add-item"
+								data-item-name="Headphones"
+								data-item-price="200.00"
+								data-item-id="42"
+								data-item-url="https://snipcart.com/headphones">
+								Add to cart
+								</button>
+							
+							
+							
+						</form><!-- Product Single - Quantity & Cart Button End -->
+						
+						<div class="clear"></div>
+						<div class="line"></div>
+
+						<!-- Product Single - Short Description
+						============================================= -->
+						<p>{{items.description}}</p>
+						<ul class="iconlist">
+							<li ng-repeat="item in items.list"><i class="icon-caret-right"></i>{{item}}</li>
+						</ul><!-- Product Single - Short Description End -->
+
+						<!-- Product Single - Meta
+						============================================= -->
+						<div class="panel panel-default product-meta">
+							<div class="panel-body">
+								<span itemprop="productID" class="sku_wrapper">SKU: <span class="sku">8465415</span></span>
+								<span class="posted_in">Category: <a href="#" rel="tag">Dress</a>.</span>
+								<span class="tagged_as">Date: {{items.date * 1000 | date:"dd/MM/yyyy"}}</span>
+							</div>
+						</div><!-- Product Single - Meta End -->
+
+						<!-- Product Single - Share
+						============================================= -->
+						<div class="si-share noborder clearfix">
+							<span>Share:</span>
+							<div>
+								<a href="#" class="social-icon si-borderless si-facebook">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+								<a href="#" class="social-icon si-borderless si-twitter">
+									<i class="icon-twitter"></i>
+									<i class="icon-twitter"></i>
+								</a>
+								<a href="#" class="social-icon si-borderless si-pinterest">
+									<i class="icon-pinterest"></i>
+									<i class="icon-pinterest"></i>
+								</a>
+								<a href="#" class="social-icon si-borderless si-gplus">
+									<i class="icon-gplus"></i>
+									<i class="icon-gplus"></i>
+								</a>
+								<a href="#" class="social-icon si-borderless si-rss">
+									<i class="icon-rss"></i>
+									<i class="icon-rss"></i>
+								</a>
+								<a href="#" class="social-icon si-borderless si-email3">
+									<i class="icon-email3"></i>
+									<i class="icon-email3"></i>
+								</a>
+							</div>
+						</div><!-- Product Single - Share End -->
+
+					</div>
+
+					<div class="col-md-2 col-s-12">
+
+						<a href="#" title="Brand Logo" class="hidden-xs"><img class="image_fade" src="images/shop/brand.jpg" alt="Brand Logo"></a>
+
+						<div class="divider divider-center"><i class="icon-circle-blank"></i></div>
+
+						<div class="feature-box fbox-plain fbox-dark fbox-small">
+							<div class="fbox-icon">
+								<i class="icon-thumbs-up2"></i>
+							</div>
+							<h3>100% Original</h3>
+							<p class="notopmargin">We guarantee you the sale of Original Brands.</p>
+						</div>
+
+						<div class="feature-box fbox-plain fbox-dark fbox-small">
+							<div class="fbox-icon">
+								<i class="icon-credit-cards"></i>
+							</div>
+							<h3>Payment Options</h3>
+							<p class="notopmargin">We accept Visa, MasterCard and American Express.</p>
+						</div>
+
+						<div class="feature-box fbox-plain fbox-dark fbox-small">
+							<div class="fbox-icon">
+								<i class="icon-truck2"></i>
+							</div>
+							<h3>Free Shipping</h3>
+							<p class="notopmargin">Free Delivery to 100+ Locations on orders above $40.</p>
+						</div>
+
+						<div class="feature-box fbox-plain fbox-dark fbox-small">
+							<div class="fbox-icon">
+								<i class="icon-undo"></i>
+							</div>
+							<h3>30-Days Returns</h3>
+							<p class="notopmargin">Return or exchange items purchased within 30 days.</p>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+

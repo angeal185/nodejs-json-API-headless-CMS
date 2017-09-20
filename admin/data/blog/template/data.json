@@ -1,0 +1,23 @@
+[{
+    "id": "date",
+    "info": "timestamp"
+}, {
+    "id": "author",
+    "info": "authors name"
+}, {
+    "id": "slug",
+    "info": "page slug"
+
+}, {
+    "id": "title",
+    "info": "page title"
+
+}, {
+    "id": "img",
+    "info": "http://..."
+
+}, {
+    "id": "category",
+    "info": "page category"
+
+}]

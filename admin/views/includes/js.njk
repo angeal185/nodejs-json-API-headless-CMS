@@ -1,0 +1,76 @@
+
+
+<script src="/app/js/jquery.js"></script>
+<script src="/app/js/vue/vue.min.js"></script>
+<script src="/app/js/vue/resource.min.js"></script>
+<script src="/app/js/vue/components.js"></script>
+<script src="/app/js/bootstrap.min.js"></script>
+{% if (schemaURL) or (editorURL) or (todoURL) %}
+<script src="/app/js/bootstrap-select.js"></script>
+{% endif %}
+{% if schemaURL %}
+<script src="/app/js/json-ld.js"></script>
+{% endif %}
+{% if (schemaURL) or (optionsURL) %}
+{% else %}
+<script src="/app/markdown/js/es5-shim.min.js"></script>
+<script src="/app/markdown/js/lodash.js"></script>
+<script src="/app/markdown/js/markdown-it.js"></script>
+<script src="/app/markdown/js/twemoji.min.js"></script>
+<script src="/app/markdown/js/markdown.js"></script>
+{% endif %}
+
+<script src="/app/js/init.js"></script>
+<script src="/app/js/bootstrap-switch.js"></script>
+<script src="/app/js/FileSaver.js"></script>
+<script src="/app/js/validator.js"></script>
+<script src="/app/js/alertify.js"></script>
+<script src="/app/js/ace/ace.js"></script>
+<script src="/app/js/ace/mode-html.js"></script>
+<script src="/app/js/ace/mode-css.js"></script>
+<script src="/app/js/ace/mode-javascript.js"></script>
+<script src="/app/js/ace/worker-html.js"></script>
+<script src="/app/js/ace/worker-css.js"></script>
+<script src="/app/js/ace/worker-javascript.js"></script>
+
+<script src="/app/highlight/js/highlight.pack.js"></script>
+<script src="/app/highlight/js/json.min.js"></script>
+{% if editorURL %}
+<script src='/app/js/editor.js'></script>
+{% endif %}
+{% if editorURL %}	
+<script src="/app/js/post.js"></script>
+<script src="/app/js/flickrSchema.js"></script>
+<script src="/app/js/gallerySchema.js"></script>
+<script src="/app/js/item.js"></script>
+<script src="/app/js/gulpConf.js"></script>
+<script src="/app/js/globals.js"></script>
+<script src="/app/js/app.js"></script>
+{% endif %}
+
+{% if schemaURL %}
+{% else %}
+<script src="/app/js/main.js"></script>
+{% endif %}
+{% if optionsURL %}
+{% else %}
+{% if config.googleCharts %}
+<script src="https://www.google.com/jsapi"></script>
+<script src="/app/js/googleChart.js"></script>
+{% endif %}
+<script>alertify.success('{{title}}');</script>
+
+{% if config.tawkTo %}
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/58e8eb8230ab263079b5f08f/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+{% endif %}
+{% endif %}

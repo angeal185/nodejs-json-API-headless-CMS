@@ -1,0 +1,21 @@
+{
+    "id": 3,
+    "date": 1499484421,
+    "name": "itemd",
+    "slug": "item-d",
+	"url": "/",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren",
+    "price": 499.99,
+    "wasPrice": 399.99,
+    "label": "SALE",
+    "stars": 1,
+    "list": {
+        "0": "Dynamic Color Options",
+        "1": "Lots of Size Options",
+        "2": "30-Day Return Policy"
+    },
+	"img": {
+        "0": "images/items/1.jpg",
+        "1": "images/items/2.jpg"
+    }
+}

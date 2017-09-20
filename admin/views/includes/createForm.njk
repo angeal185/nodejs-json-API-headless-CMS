@@ -1,0 +1,24 @@
+<div class="col-md-6 col-sm-12 mb20">
+
+	<form id="create{{title}}" action="/create{{title}}" method="post">
+		<div class="col-md-6 col-sm-12 mb20">
+			<small>Title</small><br>
+			<input id="{{title}}Title" class="form-control" type="text" name="{{title}}Title" v-model="title" />
+		</div>
+		<div class="col-md-6 col-sm-12 mb20">
+			<small>module</small><br>
+			<input id="cModule" class="form-control" type="text" name="cModule" v-model="module" />
+		</div>
+
+		<div class="col-sm-12 mb20">
+			<small>$scope, $http, ...</small>
+			<input id="c{{title}}" class="form-control" type="text" name="c{{title}}" v-model="directives" />
+		</div>
+		<div class="col-sm-12 mb20">
+			<small>body</small><br>
+			<textarea id="contbody" class="form-control" type="text" name="contbody" v-model="contbody" data-editor></textarea>
+		</div>
+		
+	</form>
+	{{ macro.createBtn(click="submitForm") }}
+</div>

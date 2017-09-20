@@ -1,0 +1,253 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="container-fluid">
+{{ macro.breadcrumb(title) }}
+<h3 class="center">JSON-LD</h3>
+<div id="formHolder" class="col-md-6 col-sm-12">
+
+  <form id="selector">
+    Select the type of markup you want to create:
+    <select id="form-selector" name="form-selector" class="form-control">
+      <option>Start Here</option>
+    </select>
+  </form>
+  <form id="local_business" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+
+    <label for="orgType">Select Local Business Type:</label>
+    <select name="orgType" data-path="@type" class="selectpicker">
+		{{ macro.op(item="Animal Shelter") }}
+      <optgroup label='Automotive' id='automotive'>
+        Automotive 
+	{% for item in items.auto %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Emergency'>
+    {% for item in items.emergency %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label="Entertainment">
+    {% for item in items.entertainment %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Financial'>
+	{% for item in items.financial %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Food'>
+	{% for item in items.food %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Health And Beauty'>
+	{% for item in items.health %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Home And Construction'>
+	{% for item in items.home %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Lodging'>
+	{% for item in items.lodging %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Medical/Dental'>
+	{% for item in items.medical %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Professional Services'>
+	{% for item in items.services %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+	{% for item in items.store1 %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      <optgroup label='Sports Activities'>
+	{% for item in items.sports %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+      <optgroup label='Stores'>
+	{% for item in items.stores %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      </optgroup>
+	{% for item in items.store2 %}
+		{{ macro.op(item) }}
+	{% endfor %}
+      
+    </select>
+
+	{{ macro.schemaName() }}
+	{{ macro.addressInfo() }}
+	{{ macro.geo() }}
+    <p>
+      Select Business Hours:
+    </p>
+    <input class='openingHours' type="hidden" data-path='openingHours'>
+	{% for item in items.days %}
+		{{ macro.days(item) }}
+	{% endfor %}
+    <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
+    <label for="contactType">Contact Type:</label>
+    <input class="contactType form-control" name="contactType" type="text" data-path="contactPoint.contactType">
+    <label for="telephone">Telephone:</label>
+    <input class="telephone form-control" name="telephone" type="text" data-path="contactPoint.telephone" placeholder="+61(000)000-000">
+  </form>
+  
+  <form id="person" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <input type="hidden" data-path="@type" value="person">
+    <label for="name">Name:</label>
+    <input class="name form-control" name="name" type="text" data-path="name">
+    <label for="jobTitle">Job Title:</label>
+    <input class="jobTitle form-control" name="jobTitle" type="text" data-path="jobTitle">
+    <label for="url">URL:</label>
+    <input class="url form-control" name="url" type="text" data-path="url">
+	{{ macro.addressInfo() }}
+   <label for="email">Email:</label>
+    <input class="email form-control" name="email" type="text" data-path="email">
+    <label for="telephone">Telephone (please include country code, +1 for USA):</label>
+    <input class="telephone form-control" name="telephone" type="text" data-path="telephone" placeholder="+61(000)000-000">
+    <label for="birthDate">Birth Date (international format YYYY-MM-DD):</label>
+    <input class="birthDate form-control" name="birthDate" type="text" data-path="birthDate">
+  </form>
+  
+  <form id="product" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <input type="hidden" data-path="@type" value="product">
+    <label for="brand">Brand:</label>
+    <input class="brand form-control" name="brand" type="text" data-path="brand">
+    <label for="name">Name:</label>
+    <input class="name form-control" name="name" type="text" data-path="name">
+    <label for="image">Image (relative or absolute url):</label>
+    <input class="image form-control" name="image" type="text" data-path="image">
+    <label for="desription">Description:</label>
+    <textarea class="form-control" rows="5" cols="50" name="description" data-path="description"></textarea>
+    <input type="hidden" data-path="aggregateRating.@type" value="aggregateRating">
+    <label for="rating">Rating:</label>
+    <input class="rating form-control" name="rating" type="text" data-path="aggregateRating.ratingValue">
+    <label for="reviews">Based on how many reviews?</label>
+    <input class="reviews form-control" name="reviews" type="text" data-path="aggregateRating.reviewCount">
+  </form>
+  
+  <form id="event" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <label for="eventType">Select Event Type</label>
+    <select name="eventType" type="select" data-path="@type" class="selectpicker">
+	{% for item in items.event %}
+		{{ macro.opVal(item) }}
+	{% endfor %}
+    </select>
+    <label for="name">Name:</label>
+    <input class="name form-control" name="name" type="text" data-path="name">
+    <label for="url">URL:</label>
+    <input class="url form-control" name="url" type="text" data-path="url">
+    <label for="desription">Description:</label>
+    <textarea class="form-control" rows="5" cols="50" name="description" data-path="description"></textarea>
+    <label for="startDate">Start Date(mm/dd/yyyy hh:mm am/pm):</label>
+    <input class="startDate form-control" name="startDate" type="datetime-local" data-path="startDate" class="start-date form-control">
+    <label for="endDate">End Date(mm/dd/yyyy hh:mm am/pm):</label>
+    <input class="endDate form-control" name="endDate" type="datetime-local" data-path="endDate" class="end-date form-control">
+    <input type="hidden" data-path="location.@type" value="Place">
+    <label for="location-name">Venue Name:</label>
+    <input class="location-name form-control" name="location-name" type="text" data-path="location.name">
+    <label for="location-url">Venue URL:</label>
+    <input class="location-url form-control" name="location-url" type="text" data-path="location.sameAs">
+    
+	{{ macro.addressInfo(l="location.") }}
+
+	<input type="hidden" data-path="offers.@type" value="Offer">
+    <label for="offerDesc">Offer Description:</label>
+    <input class="offerDesc form-control" name="offerDesc" type="text" data-path="offers.description">
+    <label for="offerURL">Offer URL:</label>
+    <input class="offerURL form-control" name="offerURL" type="text" data-path="offers.url">
+    <label for="offerPrice">Offer Price:</label>
+    <input class="offerPrice form-control" name="offerPrice" type="text" data-path="offers.price">
+  </form>
+  
+  <form id="organization" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <label for="orgType">Select Organization Type:</label>
+    <select name="orgType" data-path="@type" class="selectpicker">
+	{% for item in items.org %}
+		{{ macro.opVal(item) }}
+	{% endfor %}
+    </select>
+	{{ macro.schemaName() }}
+	{{ macro.addressInfo() }}
+    {{ macro.geo() }}
+    <p>
+      Select Business Hours:
+    </p>
+    <input class='openingHours' type="hidden" data-path='openingHours'>
+	{% for item in items.days %}
+		{{ macro.days(item) }}
+	{% endfor %}
+    <input type="hidden" data-path="contactPoint.@type" value="ContactPoint">
+    <label for="telephone">Telephone:</label>
+    <input class="telephone form-control" name="telephone" type="text" data-path="contactPoint.telephone" placeholder="+61(000)000-000">
+    <label for="contactType">Contact Type:</label>
+    <input class="contactType form-control" name="contactType" type="text" data-path="contactPoint.contactType">
+  </form>
+  <form id="website" style="display:none;">
+    <input type="hidden" data-path="@context" value="http://www.schema.org">
+    <input type="hidden" data-path="@type" value="WebSite">
+    <label for="name">Name:</label>
+    <input class="name form-control" name="name" type="text" data-path="name">
+    <label for="altName">Alternate Name:</label>
+    <input class="name form-control" name="name" type="text" data-path="alternateName">
+    <label for="url">URL:</label>
+    <input class="url form-control" name="url" type="text" data-path="url">
+  </form>
+</div>
+
+<div class="container-fluid">
+<div class="col-md-6 col-sm-12">
+<h3 class="center mb20">output</h3>
+<button class="btn btn-default btn-block" onclick="json.select(),copyToClp()">Select</button>
+<form id="form" action="/schema"  method="post">
+  <textarea id="json" class="json" name="json" readonly="readonly"></textarea>
+  <label for="schemaFileName">File name</label>
+  <input type="text" class="form-control" id="schemaFileName" value="schemaFileName" name="schemaFileName" placeholder="Enter file name">
+</form>
+  <div id="buttonHolder">
+	<h2>Save schema to file</h2>
+	<button class="btn btn-default btn-block" onclick="document.getElementById('form').submit()" type="submit">save</button>
+	<button class="btn btn-default btn-block" onclick="{{func}}()" type="submit">Download</button>
+  </div>
+</div>
+</div>
+</div>
+<div id="sameAsHidden" style="display: none;">
+  <input class="sameAsField form-control" name="sameAs" type="text">
+</div>
+<div id="timeKeeper" style="display: none;">
+	<span class="openHours">
+		<select class="form-control" name="open">
+		  <option value="">Open</option>
+		{% for item in items.hours %}
+			{{ macro.options(item) }}
+		{% endfor %}
+		</select>
+	</span>
+	<span class="closeHours">
+		<select class="form-control" name="close">
+		  <option value="">Close</option>
+		{% for item in items.hours %}
+			{{ macro.options(item) }}
+		{% endfor %}
+		</select>
+	</span>
+</div></div>
+{% endblock %}

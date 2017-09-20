@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2">
+        <h1 class="center">{{title | capitalize}}</h1>
+        <ol class="breadcrumb">
+            <li> <i class="fa fa-dashboard"></i>&nbsp;&nbsp;<a href="/">Dashboard</a> </li>
+            <li class="active"> <i class="fa fa-code"></i>&nbsp;&nbsp;<span id="breadcrumb">{{title | capitalize}}</span> </li>
+        </ol>
+        <form action="/createTodo" method="post">
+			<div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" placeholder="Page title" class="form-control" />
+			</div>
+		
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" type="text" name="date" placeholder="date" class="form-control" />
+			</div>
+
+            <div class="form-group">
+                <label for="content">content</label>
+                <textarea data-editor id="content" type="text" name="content" placeholder="Description" class="form-control"></textarea>
+            </div>
+			
+            <button type="submit" id="form" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ macro.htmlAce() }}
+{% endblock %}

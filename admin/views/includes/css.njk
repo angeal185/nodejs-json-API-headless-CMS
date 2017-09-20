@@ -1,0 +1,24 @@
+{% if editorURL %}
+<link rel="stylesheet" id="aceTheme_script">
+{% endif %}
+<link rel="stylesheet" href="/app/css/font-awesome.min.css">
+<link rel="stylesheet" href="/app/css/animate.css">
+{% if config.theme  %}
+<link rel="stylesheet" href="/app/css/darkly.min.css">
+{% else %}
+<link rel="stylesheet" href="/app/css/light.css">
+{% endif %}
+{% if (schemaURL) or (editorURL) or (todoURL)  %}
+<link rel="stylesheet" href="/app/css/bootstrap-select.css">
+{% endif %}
+{% if schemaURL  %}
+<link rel="stylesheet" href="/app/css/style.css">
+{% endif %}
+
+<link rel="stylesheet" href="/app/highlight/css/monokai.css">
+
+<link rel="stylesheet" href="/app/css/checkbox.css">
+<link rel="stylesheet" href="/app/css/styles.css">
+
+
+

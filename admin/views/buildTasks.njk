@@ -1,0 +1,33 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<div class="container-fluid">
+
+	<h1 class="center">{{title | capitalize}}</h1>
+	<ol class="breadcrumb">
+		<li> <i class="fa fa-dashboard"></i>&nbsp;&nbsp;<a href="/">Dashboard</a> </li>
+		<li class="active"> <i class="fa fa-code"></i>&nbsp;&nbsp;<span id="breadcrumb">{{title | capitalize}}</span> </li>
+	</ol>
+	<div class="row">
+	<form action="/buildTask" method="post">
+		<div class="form-group col-md-6">
+		  <input id="buildTask" type="text" name="buildTask" placeholder="buildTask" class="form-control" style="height: 80px;
+		text-align: center;" readonly>
+		</div>
+		<div class="col-md-6">
+			<button type="submit" id="form" class="btn btn-primary btn-lg btn-block btn-edit mt10">Start task</button>
+		</div>
+
+	</form>
+	</div>
+	<div class="row">
+	{% for item in gdata.buildTasks %}
+		<div class="col-md-4">
+			<button type="button" onclick="document.getElementById('buildTask').value = this.innerHTML;" class="btn btn-primary btn-lg btn-block shrink bs15">{{item}}</button>
+		</div>
+	{% endfor %}	
+	</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+<style>
+.pr40{padding-right:40px}
+
+</style>
+
+
+<div class="container-fluid">
+
+	<h1 class="center">{{title | capitalize}}</h1>
+	<ol class="breadcrumb">
+		<li> <i class="fa fa-dashboard"></i>&nbsp;&nbsp;<a href="/">Dashboard</a> </li>
+		<li class="active"> <i class="fa fa-code"></i>&nbsp;&nbsp;<span id="breadcrumb">{{title | capitalize}}</span> </li>
+	</ol>
+	<form id="form" action="/cmsTplCreate" method="post">
+	<div class="row">
+		<div class="form-group col-md-6 col-sm-12">
+			<label for="tplTitle">Title</label>
+			<input id="tplTitle" type="text" name="tplTitle" placeholder="Add title" class="form-control" />
+		</div>
+		
+		<div class="form-group col-md-6 col-sm-12">
+		<label for="title">Save location</label>
+			<input type="titleResult" class="form-control" name="titleResult" value="./admin/views/" placeholder="title" readonly />
+		</div>
+	</div>	
+
+	
+
+	<div class="col-md-6 col-sm-12 m20">	
+		<button type="button" id="loadPageTpl" class="btn btn-primary btn-block">page</button>
+	</div>	 
+
+	<div class="col-md-6 col-sm-12 m20">
+		<button type="button" id="loadLayoutTpl" class="btn btn-primary btn-block">layout</button>
+	</div>
+
+		<div id="working"></div>
+	</form>
+	
+	<div class="col-md-6 col-sm-12 m20">
+		<button type="submit" id="stage" class="btn btn-default btn-block">Stage changes</button>
+	</div>	
+		
+	<div class="col-md-6 col-sm-12 m20">
+		<button type="submit" id="submit" class="btn btn-default btn-block" disabled="disabled">Commit changes</button>
+	</div>	
+	
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+var layout = '<textarea id="tplContent" name="tplContent" class="form-control" data-editor readonly></textarea>';
+var warning = alertify.success("This action will overright any file of the same name");
+{% raw %}
+var pageTpl = `
+{% extends "layout.njk" %}
+  
+{% import "macros/macros.njk" as macro %}
+{% block head %}
+
+{% endblock %}
+{% block content %}
+
+{% include "includes/include.njk" %}
+
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}
+`;
+
+
+var layoutTpl = `
+{% import "macros/macros.njk" as macro %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+	<link rel="stylesheet" href="/app/css/styles.css">
+{% block head %}
+
+{% endblock %}
+</head>
+<body>
+	{% include "includes/include.njk" %}
+	{% block content %}
+
+	{% endblock %}
+	<script src="/app/js/main.js"><\/script>
+	{% block scripts %}
+
+	{% endblock %}
+</body>
+</html>
+`;
+{% endraw %}
+
+function loadit(){
+	$('#working').empty().append(layout);
+	$('textarea[data-editor]').each(function () {
+	var textarea = $(this);
+	var mode = textarea.data('editor');
+
+	var editDiv = $('<div>', {
+		position: 'absolute',
+		width: "100%",
+		height: "400px",
+		'class': textarea.attr('class')
+	}).insertBefore(textarea);
+	var editor = ace.edit(editDiv[0]);
+	editor.$blockScrolling = Infinity;
+	editor.renderer.setShowGutter(true);
+	editor.getSession().setValue(type);
+	editor.getSession().setUseWrapMode(true);
+	editor.getSession().setMode('ace/mode/twig');
+	editor.setTheme('ace/theme/monokai');
+
+	$('#stage').click(function() {
+		textarea.val(editor.getSession().getValue());
+		$('#submit').removeAttr('disabled');
+		})
+	});
+};
+
+
+$("#loadPageTpl").click(function () {
+	type = pageTpl;
+	loadit();	
+		
+	
+ });
+
+$("#loadLayoutTpl").click(function () {
+	type = layoutTpl;
+	loadit();
+ });
+ 
+$("#submit").click( function() {
+   $('#form').submit();
+}); 
+</script>
+
+{% endblock %}

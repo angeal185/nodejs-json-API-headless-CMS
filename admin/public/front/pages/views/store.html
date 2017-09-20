@@ -1,0 +1,110 @@
+<breadcrumbs></breadcrumbs>
+<div class="container mg-40">
+	<div class="row center">
+		<form class="form-inline">
+			<div class="form-group">
+				<label >Search</label>
+				<input type="text" ng-model="search" class="form-control" placeholder="Search">
+			</div>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default" ng-click="sort('name')">name</button>
+				<button type="button" class="btn btn-default" ng-click="sort('date')">date</button>
+				<button type="button" class="btn btn-default" ng-click="sort('price')">price</button>
+				<button type="button" class="btn btn-default" ng-click="sort('stars')">stars</button>
+			</div>
+		</form>
+	</div>
+	<div class="postcontent nobottommargin col_last">
+		<div id="shop" class="shop product-3 clearfix">	
+			<div class="product clearfix" dir-paginate="item in items |orderBy:sortKey:reverse|filter:search|itemsPerPage:12">
+				<div class="product-image">
+					<a ng-repeat="items in item.img" href="#"><img src="{{items}}"></a>
+					<div class="sale-flash">{{item.label}}</div>
+					<div class="product-overlay">
+						<a href="#" class="add-to-cart"><i class="icon-shopping-cart"></i><span> Add to Cart</span></a>
+						<a ng-href="#!/store/items/{{item.slug}}" class="item-quick-view"><i class="icon-zoom-in2"></i><span>View</span></a>
+					</div>
+				</div>
+				<div class="product-desc">
+					<div class="product-title">
+						<h3><a href="#!/store/items/{{item.slug}}">{{item.name}}</a></h3>
+					</div>
+					<div class="product-price">
+						<del>{{item.wasPrice | currency:"AUD$"}}</del> <ins>{{item.price | currency:"AUD$"}}</ins>
+					</div>
+					<div class="product-price">
+						<h4>{{item.date * 1000 | date:"MM/yyyy"}}</h4>
+					</div>
+					<div class="product-rating">
+						<rating value="item.stars" max="5"></rating>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="center">
+		<dir-pagination-controls
+		   max-size="5"
+		   direction-links="true"
+		   boundary-links="true" >
+		</dir-pagination-controls>
+	</div></div>
+	<!-- Sidebar
+	============================================= -->
+	<div class="sidebar nobottommargin">
+		<div class="sidebar-widgets-wrap">
+
+			<div class="widget widget_links clearfix">
+				<h4>Shop Categories</h4>
+				<ul ng-controller="MainCtrl" >
+					<li ng-repeat="category in data.storeCategories">
+						<a href="#!/store/categories/{{category.href}}">{{category.name}}</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="widget clearfix">
+				<h4>Recent Items</h4>
+				<div id="post-list-footer">
+					<div ng-repeat="item in items | limitTo: 4" class="spost clearfix">
+						<div ng-include="'includes/singleListItem.html'"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="widget clearfix">
+				<h4>On Sale</h4>
+				<div class="widget-last-view">
+					<div ng-repeat="item in items | filter:onSaleFilter | limitTo: 4" class="spost clearfix">
+						<div ng-include="'includes/singleListItem.html'"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="widget clearfix">
+				<h4>Popular Items</h4>
+				<div id="Popular-item">
+					<div ng-repeat="item in items | filter:starsFilter | limitTo: 4" class="spost clearfix">
+						<div ng-include="'includes/singleListItem.html'"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="widget subscribe-widget clearfix">
+				<h4>Subscribe For Latest Offers</h4>
+				<h5>Subscribe to Our Newsletter to get Important News, Amazing Offers &amp; Inside Scoops:</h5>
+				<form action="#" role="form" class="notopmargin nobottommargin">
+					<div class="input-group divcenter">
+						<input type="text" class="form-control" placeholder="Enter your Email" required="">
+						<span class="input-group-btn">
+							<button class="btn btn-success" type="submit"><i class="icon-email2"></i></button>
+						</span>
+					</div>
+				</form>
+			</div>
+
+			
+
+		</div>
+	</div><!-- .sidebar end -->
+
+</div>

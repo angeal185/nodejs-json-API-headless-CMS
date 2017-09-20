@@ -1,0 +1,130 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+<div class="container-fluid">
+	{{ macro.breadcrumb(title) }}
+	<form action="/options" method="post">
+	{{ macro.optionBlock(i="tawkTo",t="tawkTo") }}
+	{{ macro.optionBlock(i="googleCharts",t="Google Charts") }}
+	{{ macro.optionBlock(i="theme",t="Dark Theme") }}
+	{{ macro.optionBlock(i="minifyOutput",t="Minify output") }}
+	{{ macro.optionBlock(i="cache",t="Cache templates") }}
+	{{ macro.optionBlock(i="enableStylus",t="Enable Stylus") }}
+	{{ macro.optionBlock(i="enableScss",t="Enable Scss") }}
+	{{ macro.optionBlock(i="enableLess",t="Enable Less") }}
+	{{ macro.optionBlock(i="encryptedBackups",t="Enable backups") }}
+	{{ macro.optionBlock(i="passwordSafe",t="Password Vault") }}
+	{{ macro.optionBlock(i="sysMonitor",t="System Monitor") }}
+	{{ macro.optionBlock(i="cmsEditor",t="CMS Editor") }}
+	{{ macro.optionBlock(i="buildTasks",t="Build tasks") }}
+		<button type="submit"  id="form" class="btn btn-primary btn-lg btn-block btn-edit">Save</button>
+	</form>
+	
+	
+
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+$(function(){
+
+	$("#tawkTo").val({{config.tawkTo}});
+	$("#googleCharts").val({{config.googleCharts}});
+	$("#theme").val({{config.theme}});
+	$("#minifyOutput").val({{config.minifyOutput}});
+	$("#cache").val({{config.cache}});
+	$("#enableStylus").val({{config.enableStylus}});
+	$("#enableScss").val({{config.enableScss}});
+	$("#enableLess").val({{config.enableLess}});
+	$("#encryptedBackups").val({{config.encryptedBackups}});
+	$("#passwordSafe").val({{config.passwordSafe}});
+	$("#sysMonitor").val({{config.sysMonitor}});
+	$("#cmsEditor").val({{config.cmsEditor}});
+	$("#buildTasks").val({{config.buildTasks}});
+
+   $("#tawkToBtn").click(function () {
+	  $("#tawkTo").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   $("#googleChartsBtn").click(function () {
+	  $("#googleCharts").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   $("#themeBtn").click(function () {
+	  $("#theme").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   $("#minifyOutputBtn").click(function () {
+	  $("#minifyOutput").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#cacheBtn").click(function () {
+	  $("#cache").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#enableStylusBtn").click(function () {
+	  $("#enableStylus").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#enableScssBtn").click(function () {
+	  $("#enableScss").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#enableLessBtn").click(function () {
+	  $("#enableLess").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#encryptedBackupsBtn").click(function () {
+	  $("#encryptedBackups").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#passwordSafeBtn").click(function () {
+	  $("#passwordSafe").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#sysMonitorBtn").click(function () {
+	  $("#sysMonitor").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#cmsEditorBtn").click(function () {
+	  $("#cmsEditor").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+   
+   $("#buildTasksBtn").click(function () {
+	  $("#buildTasks").val(function(i, text){
+          return text === "false" ? "true" : "false";
+      })
+   });
+});
+
+
+
+</script>
+{% endblock %}
+

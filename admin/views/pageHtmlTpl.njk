@@ -1,0 +1,127 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+
+<div id="modelDiv5" class="container-fluid animated fadeInUp">
+	
+		<h2 class="center">Code editor</h2>
+		
+		<form id="deleteForm" action="/deleteHtmlTpl" method="post">
+			<input class="form-control hidden" type="text" value="{{folder}}" name="folderLocal" >
+			<input class="form-control hidden" type="text" value="{{tree.name}}" name="Location" >
+			<div class="col-md-6 col-sm-12 mb20">
+				<p class="center">Title</p><br>
+				<input id="original" class="form-control" type="text" name="original" readonly />
+			</div>
+		</form>	
+		
+		<form id="form" action="/updateHtmlTpl" method="post">
+			<input class="form-control hidden" type="text" value="{{folder}}" name="folderLocal" >
+			<input class="form-control hidden" type="text" value="{{tree.name}}" name="Location" >
+			<div class="col-md-6 col-sm-12 mb20">
+				<p class="center">Create new</p><br>
+				<input id="treeItem" class="form-control" type="text" name="treeItem" />
+			</div>		
+			
+			<textarea id="loadHtmlTpl" class="form-control" type="text" name="loadHtmlTpl" readonly></textarea>
+				
+		</form>
+		
+		<div class="col-md-6 col-sm-12 m20">
+			<button id="stage" class="btn btn-default btn-block">Stage changes</button>
+		</div>
+		
+		<div class="col-md-6 col-sm-12 m20">
+			<button type="submit" id="submit" class="btn btn-default btn-block" disabled="disabled">Commit changes</button>
+		</div>
+		
+		<div class="col-md-6 col-sm-12 m20">
+			<button id="tree-delete" type="submit" class="btn btn-default btn-block">Delete</button>
+		</div>
+		
+		<div class="col-md-6 col-sm-12 m20">
+			<button id="tree-toggle" class="btn btn-default btn-block tree-toggle" onclick="closeMdl()">Back</button>
+		</div>
+
+	
+</div>
+
+<div class="container-fluid mb60 tree-view">
+{{ macro.breadcrumb(title,sub="Edit") }}
+	<h3 id="itemLocation" class="center" name="{{tree.name}}">{{tree.name}}</h3>
+
+	<br>
+	{% for item in tree.children %}
+	<div class="col-md-4">
+		<div class="panel tree-sub" style="padding: 1em">
+			<h4 class="item-name">{{item.name | upper}}</h4>
+			<p>path:<span> {{item.path}}</span></p>
+			<p>size:<span> {{item.size}}kb</span></p>
+			<p>type:<span> {{item.extension | replace(".", "") }}</span></p>
+			<button id="{{item.name}}" class="btn btn-primary btn-small tree-btn tree-toggle" onclick="document.getElementById('treeItem').value = document.getElementById('original').value =  this.id,loadHtml(),open5()" >Edit</button>
+		</div>
+	</div>
+{% endfor %}
+
+
+	
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$( ".tree-toggle" ).click(function() {
+  $( ".tree-view" ).toggle( "slow", function() {
+    // Animation complete.
+  });
+});
+
+$("#submit").click( function() {
+   $('#form').submit();
+}); 
+
+$("#tree-delete").click( function() {
+   $('#deleteForm').submit();
+}); 
+
+function loadHtml(url, el) {
+	var folder = document.getElementById('itemLocation').innerHTML;
+	var name = document.getElementById('treeItem').value;
+	var url = '/front/{{folder}}/{{title}}/' + name;
+	
+	var el = $('#loadHtmlTpl');
+	$.get(url, null, function (data) {
+		el.val(data);
+		$(document).ready(function(){
+		var textarea = $('#loadHtmlTpl');
+		var editDiv = $('<div>', {
+			position: 'absolute',
+			width: "100%",
+			height: "400px",
+			'class': textarea.attr('class')
+		}).insertBefore(textarea);
+		textarea.css('display', 'block');
+		var editor = ace.edit(editDiv[0]);
+		editor.$blockScrolling = Infinity;
+		editor.renderer.setShowGutter(true);
+		editor.getSession().setValue(textarea.val());
+		editor.getSession().setUseWrapMode(true);
+		editor.setTheme("ace/theme/monokai");
+		editor.getSession().setMode("ace/mode/{{mode}}");
+		
+		// copy back to textarea on form submit...
+		$('#stage').click(function() {
+			textarea.val(editor.getSession().getValue());
+			$('#submit').removeAttr('disabled');
+		})
+	   }); 
+	}, 'text');
+	 
+};
+
+
+
+
+</script>
+{% endblock %}

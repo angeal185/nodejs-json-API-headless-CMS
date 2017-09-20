@@ -1,0 +1,1 @@
+define("ace/theme/eclipse",["require","exports","module","ace/lib/dom"],function(e,t,n){"use strict";t.isDark=!1,t.cssText='',t.cssClass="ace-eclipse";var r=e("../lib/dom");r.importCssString(t.cssText,t.cssClass)})

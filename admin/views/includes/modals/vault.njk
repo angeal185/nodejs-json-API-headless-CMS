@@ -1,0 +1,29 @@
+
+<div class="modal fade vaultModal" tabindex="-1" role="dialog" aria-labelledby="vaultModal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+	<h3 class="m20 center">Vault</h3>
+	{% if encSettings %}
+	<form id="unlockDB" role="form" action="/unlockDB" method="post">		
+		<div class="form-group">
+
+			<div class="form-group m20">
+				<input type="text" class="form-control w100" name="dbDecPassord" id="dbDecPassord" placeholder="password">
+				<div class="help-block">Minimum of 6 characters</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<button type="submit" id="dec" class="btn btn-primary btn-block mt30">decrypt</button>
+			</div>
+			
+		</div>
+	</form>	
+	{% else %}
+	<form id="lockDB" role="form" action="/lockDB" method="post">
+		<button type="submit" id="enc" class="btn btn-primary btn-block mt30"v-on:click="submit">encrypt</button>
+	</form>
+	{% endif %}
+    </div>
+  </div>
+</div>

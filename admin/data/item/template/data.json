@@ -1,0 +1,53 @@
+[{
+    "id": "id",
+    "info": "id"
+},{
+    "id": "date",
+    "info": "timestamp"
+}, {
+    "id": "name",
+    "info": "item name"
+},{
+    "id": "url",
+    "info": "http://..."
+}, {
+    "id": "slug",
+    "info": "page slug"
+
+}, {
+    "id": "price",
+    "info": "item price"
+
+}, {
+    "id": "wasPrice",
+    "info": "item price"
+
+}, {
+    "id": "label",
+    "info": "item label"
+
+}, {
+    "id": "category",
+    "info": "item category"
+
+}, {
+    "id": "listA",
+    "info": "item list a"
+
+}, {
+    "id": "listB",
+    "info": "item list b"
+
+}, {
+    "id": "listC",
+    "info": "item list c"
+
+}, {
+    "id": "imgLarge",
+    "info": "large img url..."
+
+}, {
+    "id": "imgSmall",
+    "info": "small img url..."
+
+}]
