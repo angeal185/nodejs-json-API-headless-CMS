@@ -33,7 +33,7 @@
     "lazypipe": "^0.2.4",
     "livereload": "^0.6.2",
     "memeye": "^1.0.3",
-    "open": "0.0.5",
+    "open": "7.1.0",
     "rimraf": "^2.4.0",
     "run-sequence": "^1.1.1",
     "tar-fs": "^1.15.3",
