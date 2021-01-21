@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
-    "socket.io": "^1.7.3"
+    "socket.io": "^2.4.0"
   },
   "description": "A memory monitor and dashboard for Node.js application on development.",
   "devDependencies": {
